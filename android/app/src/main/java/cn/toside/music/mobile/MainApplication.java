@@ -1,7 +1,6 @@
 package cn.toside.music.mobile;
 
 import com.facebook.react.PackageList;
-import com.facebook.react.flipper.ReactNativeFlipper;
 import com.reactnativenavigation.NavigationApplication;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
