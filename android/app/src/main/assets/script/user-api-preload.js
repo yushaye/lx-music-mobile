@@ -487,6 +487,7 @@ globalThis.lx_setup = (key, id, name, description, version, author, homepage, ra
         switch (eventName) {
           case EVENT_NAMES.inited:
             if (isInitedApi) return reject(new Error('Script is inited'))
+            console.log("音源的send方法触发");
             isInitedApi = true
             handleInit(data)
             resolve()
@@ -505,6 +506,7 @@ globalThis.lx_setup = (key, id, name, description, version, author, homepage, ra
       if (!eventNames.includes(eventName)) return Promise.reject(new Error('The event is not supported: ' + eventName))
       switch (eventName) {
         case EVENT_NAMES.request:
+          console.log("音源的on方法触发");
           events.request = handler
           break
         default: return Promise.reject(new Error('The event is not supported: ' + eventName))
