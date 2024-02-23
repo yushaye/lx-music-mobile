@@ -54,6 +54,7 @@ public class QuickJS {
 
   private void createEnvObj(QuickJSContext jsContext) {
     jsContext.getGlobalObject().setProperty("__lx_native_call__", args -> {
+      Log.d("UserApi [utils]", "调用native方法,action: " + args[1]);
       if (this.key.equals(args[0])) {
         callNative((String) args[1], (String) args[2]);
         return null;
@@ -177,10 +178,12 @@ public class QuickJS {
   }
 
   public Object callJS(String action) {
+    Log.d("UserApi [utils]", "调用js方法,action: " + action);
     Object[] params = new Object[]{this.key, action};
     return callJS(params);
   }
   public Object callJS(String action, Object... args) {
+    Log.d("UserApi [utils]", "调用js方法,action: " + action);
     Object[] params = new Object[args.length + 2];
     params[0] = this.key;
     params[1] = action;
