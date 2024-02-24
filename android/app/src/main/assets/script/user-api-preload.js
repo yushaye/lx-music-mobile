@@ -1,6 +1,7 @@
 'use strict'
 
 globalThis.lx_setup = (key, id, name, description, version, author, homepage, rawScript) => {
+  console.log("run lx_setup", key, id, name, description, version, author, homepage, rawScript.substring(0, 100))
   delete globalThis.lx_setup
   const _nativeCall = globalThis.__lx_native_call__
   delete globalThis.__lx_native_call__
