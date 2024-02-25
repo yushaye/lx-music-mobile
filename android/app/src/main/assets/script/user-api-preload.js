@@ -261,7 +261,7 @@ globalThis.lx_setup = (key, id, name, description, version, author, homepage, ra
   }
 
   const jsCall = (action, data) => {
-    // console.log('jsCall', action, data)
+    console.log('jsCall', action, data)
     switch (action) {
       case '__run_error__':
         if (!isInitedApi) isInitedApi = true
