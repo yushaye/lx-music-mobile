@@ -24,6 +24,16 @@ export default {
   // getLrc(songId) {
   //   return httpGet(`http://mobile.kuwo.cn/mpage/html5/songinfoandlrc?mid=${songId}&flag=0`)
   // },
+
+  printCallStack() {
+    try {
+      throw new Error('Stack Trace');
+    } catch (e) {
+      // 如果不需要自己的printCallStack函数出现在调用栈中，可以用下面的正则表达式
+      // 来去除自己和这个错误构造函数内部的调用信息
+      console.log(e.stack.replace(/at printCallStack.*\n/, ''));
+    }
+  },
   handleResult(rawData) {
     const result = []
     if (!rawData) return result
@@ -100,6 +110,7 @@ export default {
     return result
   },
   search(str, page = 1, limit, retryNum = 0) {
+    this.printCallStack()
     if (retryNum > 2) return Promise.reject(new Error('try max num'))
     if (limit == null) limit = this.limit
     // http://newlyric.kuwo.cn/newlyric.lrc?62355680

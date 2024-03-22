@@ -58,7 +58,7 @@ export const init = () => {
 }
 
 export const findMusic = async(musicInfo) => {
-  console.log("搜索音乐，musicInfo：", musicInfo)
+  console.log("搜索音乐，musicInfo：", JSON.stringify(musicInfo))
   const { name, singer, albumName, interval, source: s } = musicInfo
 
   const tasks = []
