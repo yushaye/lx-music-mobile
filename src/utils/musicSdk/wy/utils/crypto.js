@@ -51,8 +51,10 @@ export const eapi = (url, object) => {
   const digest = toMD5(message)
   console.log("md5结果：", digest)
   const data = `${url}-36cd479b6b5-${text}-36cd479b6b5-${digest}`
+  const encryptRes = aesEncrypt(Buffer.from(data).toString('base64'), AES_MODE.ECB_128_NoPadding, eapiKey, '')
+  console.log("加密前数据：", data, "\n加密结果：", encryptRes)
   return {
-    params: Buffer.from(aesEncrypt(Buffer.from(data).toString('base64'), AES_MODE.ECB_128_NoPadding, eapiKey, ''), 'base64').toString('hex').toUpperCase(),
+    params: Buffer.from(encryptRes, 'base64').toString('hex').toUpperCase(),
   }
 }
 
