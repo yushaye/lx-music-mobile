@@ -182,6 +182,7 @@ const fetchData = (url, { timeout = 15000, ...options }) => {
         signal: controller.signal,
       }).then(resp => (options.binary ? resp.blob() : resp.text()).then(text => {
         // console.log(options, headers, text)
+        console.log("fetch请求结果：", JSON.stringify(text))
         return {
           headers: resp.headers.map,
           body: text,
