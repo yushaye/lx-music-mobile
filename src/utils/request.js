@@ -167,7 +167,7 @@ const blobToBuffer = (blob) => {
 }
 
 const fetchData = (url, { timeout = 15000, ...options }) => {
-  console.log('---start---', url)
+  
 
   const controller = new global.AbortController()
   let id = BackgroundTimer.setTimeout(() => {
@@ -177,12 +177,21 @@ const fetchData = (url, { timeout = 15000, ...options }) => {
 
   return {
     request: handleRequestData(url, options).then(options => {
+      try{
+        console.log('---start---', url, '\n', JSON.stringify(options))
+      }catch (e) {
+        
+      }
       return global.fetch(url, {
         ...options,
         signal: controller.signal,
       }).then(resp => (options.binary ? resp.blob() : resp.text()).then(text => {
         // console.log(options, headers, text)
-        console.log("fetch请求结果：", JSON.stringify(text))
+        try {
+          console.log("fetch请求结果：",url , '\n', JSON.stringify(text))
+        }catch (e) {
+          
+        }
         return {
           headers: resp.headers.map,
           body: text,
